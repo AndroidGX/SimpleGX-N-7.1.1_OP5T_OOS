@@ -45,6 +45,21 @@ dump_boot;
 insert_line init.rc "init.simplegx.rc" after "import /init.usb.rc" "import /init.simplegx.rc";
 insert_line default.prop "ro.sys.fw.bg_apps_limit=60" before "ro.secure=1" "ro.sys.fw.bg_apps_limit=60";
 
+# Remove suspicious OnePlus services
+remove_section init.oem.rc "service OPNetlinkService" "seclabel"
+remove_section init.oem.rc "service wifisocket" "seclabel"
+remove_section init.oem.rc "service oemsysd" "seclabel"
+remove_section init.oem.rc "service oem_audio_device" "oneshot"
+remove_section init.oem.rc "service smartadjust" "seclabel"
+remove_section init.oem.rc "service atrace" "seclabel"
+remove_section init.oem.rc "service sniffer_set" "seclabel"
+remove_section init.oem.rc "service sniffer_start" "seclabel"
+remove_section init.oem.rc "service sniffer_stop" "seclabel"
+remove_section init.oem.rc "service tcpdump-service" "seclabel"
+remove_section init.oem.debug.rc "service oemlogkit" "socket oemlogkit"
+remove_section init.oem.debug.rc "service dumpstate_log" "seclabel"
+remove_section init.oem.debug.rc "service oemasserttip" "disabled"
+
 # end ramdisk changes
 
 write_boot;
