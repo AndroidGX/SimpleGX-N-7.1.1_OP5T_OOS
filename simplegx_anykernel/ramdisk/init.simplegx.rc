@@ -14,9 +14,6 @@ on early-init
 
 on property:sys.post_boot.parsed=1
 
-    # Disable Adaptive LMK
-    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 0
-
     # Tweak IO performance after boot complete
     write /sys/block/dm-0/queue/read_ahead_kb 128
     write /sys/block/dm-1/queue/read_ahead_kb 128
@@ -34,19 +31,6 @@ on property:sys.post_boot.parsed=1
     write /sys/module/alarm_dev/parameters/debug_mask 0
     write /sys/module/binder/parameters/debug_mask 0
     write /sys/module/xt_qtaguid/parameters/debug_mask 0
-
-    # Disable some wakelocks
-    write /sys/module/wakeup/parameters/enable_qcom_rx_wakelock_ws 0
-    write /sys/module/wakeup/parameters/enable_wlan_extscan_wl_ws 0
-    write /sys/module/wakeup/parameters/enable_ipa_ws 0
-    write /sys/module/wakeup/parameters/enable_wlan_ws 0
-    write /sys/module/wakeup/parameters/enable_timerfd_ws 0
-    write /sys/module/wakeup/parameters/enable_netlink_ws 0
-    write /sys/module/wakeup/parameters/enable_netmgr_wl_ws 0
-    write /sys/module/wakeup/parameters/enable_wlan_wow_wl_ws 0
-    write /sys/module/wakeup/parameters/enable_wlan_ipa_ws 0
-    write /sys/module/wakeup/parameters/enable_wlan_pno_wl_ws 0
-    write /sys/module/wakeup/parameters/enable_wcnss_filter_lock_ws 0
 
     # Disable kernel logging
     write /sys/kernel/printk_mode/printk_mode 0
