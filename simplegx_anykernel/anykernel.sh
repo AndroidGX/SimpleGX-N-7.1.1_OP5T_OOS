@@ -42,7 +42,7 @@ dump_boot;
 # begin ramdisk changes
 
 # init.rc
-insert_line init.qcom.rc "init.simplegx.rc" after "import init.qcom.test.rc" "import init.simplegx.rc";
+insert_line init.rc "init.simplegx.rc" after "import /init.usb.rc" "import /init.simplegx.rc";
 insert_line default.prop "ro.sys.fw.bg_apps_limit=60" before "ro.secure=1" "ro.sys.fw.bg_apps_limit=60";
 
 # end ramdisk changes
