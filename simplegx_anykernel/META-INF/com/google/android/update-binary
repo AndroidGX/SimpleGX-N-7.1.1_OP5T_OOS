@@ -137,6 +137,19 @@ fi;
 
 debugging;
 
+if [ "$(file_getprop /tmp/anykernel/anykernel.sh do.system_blobs)" == 1 ]; then
+  ui_print "Extracting system blobs..";
+  ui_print " ";
+  mount -o rw,remount -t auto /system;
+  mount -o rw,remount -t auto /vendor 2>/dev/null;
+  cp -rf /tmp/anykernel/ramdisk/WCNSS_qcom_cfg.ini /system/vendor/etc/wifi/WCNSS_qcom_cfg.ini;
+  set_perm 0 0 0644 /system/vendor/etc/wifi/WCNSS_qcom_cfg.ini;
+  mount -o ro,remount -t auto /system;
+  mount -o ro,remount -t auto /vendor 2>/dev/null;
+fi;
+
+debugging;
+
 if [ "$(file_getprop /tmp/anykernel/anykernel.sh do.cleanup)" == 1 ]; then
   cleanup;
 fi;
@@ -149,4 +162,5 @@ ui_print "       * * * * * * * * * * * * * * *     ";
 ui_print "       *           DONE !          *     ";
 ui_print "       *     REBOOT AND ENJOY !    *     ";
 ui_print "       * * * * * * * * * * * * * * *     ";
+
 
