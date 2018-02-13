@@ -44,6 +44,8 @@ dump_boot;
 
 # init.rc
 insert_line init.rc "init.simplegx.rc" after "import /init.usb.rc" "import /init.simplegx.rc";
+
+# Set the default background app limit to 60
 insert_line default.prop "ro.sys.fw.bg_apps_limit=60" before "ro.secure=1" "ro.sys.fw.bg_apps_limit=60";
 
 # Remove suspicious OnePlus services
