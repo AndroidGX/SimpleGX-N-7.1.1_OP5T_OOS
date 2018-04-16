@@ -161,8 +161,8 @@ if [ "$(file_getprop /tmp/anykernel/anykernel.sh do.system_blobs)" == 1 ]; then
   ui_print " ";
   mount -o rw,remount -t auto /system;
   mount -o rw,remount -t auto /vendor 2>/dev/null;
-  cp -rf /tmp/anykernel/ramdisk/WCNSS_qcom_cfg.ini /system/vendor/etc/wifi/WCNSS_qcom_cfg.ini;
-  set_perm 0 0 0644 /system/vendor/etc/wifi/WCNSS_qcom_cfg.ini;
+  #cp -rf /tmp/anykernel/ramdisk/WCNSS_qcom_cfg.ini /system/vendor/etc/wifi/WCNSS_qcom_cfg.ini;
+  #set_perm 0 0 0644 /system/vendor/etc/wifi/WCNSS_qcom_cfg.ini;
   mount -o ro,remount -t auto /system;
   mount -o ro,remount -t auto /vendor 2>/dev/null;
 fi;
