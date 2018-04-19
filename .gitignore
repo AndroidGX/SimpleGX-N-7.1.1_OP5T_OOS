@@ -120,3 +120,6 @@ all.config
 
 # Generated source files
 smd_rpc_sym.c
+
+# WireGuard updates
+scripts/net/
