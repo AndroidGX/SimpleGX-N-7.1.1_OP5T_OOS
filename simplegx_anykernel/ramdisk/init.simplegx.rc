@@ -1,0 +1,37 @@
+# SimpleGX KERNEL init script for OnePlus 5
+
+on early-init
+
+    # Tweak IO performance during boot up
+    write /sys/block/dm-0/queue/read_ahead_kb 2048
+    write /sys/block/dm-1/queue/read_ahead_kb 2048
+    write /sys/block/sda/queue/read_ahead_kb 2048
+    write /sys/block/sda/queue/iostats 0
+    write /sys/block/sda/queue/nr_requests 256
+    write /sys/block/sde/queue/read_ahead_kb 2048
+    write /sys/block/sde/queue/iostats 0
+    write /sys/block/sde/queue/nr_requests 256
+
+on property:sys.post_boot.parsed=1
+
+    # Tweak IO performance after boot complete
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/dm-1/queue/read_ahead_kb 128
+    write /sys/block/sda/queue/read_ahead_kb 128
+    write /sys/block/sda/queue/iostats 1
+    write /sys/block/sda/queue/nr_requests 128
+    write /sys/block/sde/queue/read_ahead_kb 128
+    write /sys/block/sde/queue/iostats 1
+    write /sys/block/sde/queue/nr_requests 128
+
+    # Turn off debugging for certain modules
+    write /sys/module/kernel/parameters/initcall_debug 0
+    write /sys/module/lowmemorykiller/parameters/debug_level 0
+    write /sys/module/alarm/parameters/debug_mask 0
+    write /sys/module/alarm_dev/parameters/debug_mask 0
+    write /sys/module/binder/parameters/debug_mask 0
+    write /sys/module/xt_qtaguid/parameters/debug_mask 0
+
+    # Disable kernel logging
+    write /sys/kernel/printk_mode/printk_mode 0
+
