@@ -6,7 +6,7 @@
 properties() { '
 kernel.string=SimpleGX KERNEL
 do.devicecheck=1
-do.modules=1
+do.modules=0
 do.cleanup=1
 do.cleanuponabort=0
 do.system_blobs=0
