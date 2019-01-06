@@ -4,18 +4,18 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=SimpleGX KERNEL
+kernel.string=
 do.devicecheck=1
 do.modules=0
 do.cleanup=1
-do.cleanuponabort=0
+do.cleanuponabort=1
 do.system_blobs=0
 device.name1=OnePlus 5T
 device.name2=OnePlus5T
 device.name3=oneplus5T
 device.name4=dumpling
 device.name5=
-supported.versions=
+supported.versions=9
 '; } # end properties
 
 # shell variables
@@ -32,7 +32,6 @@ ramdisk_compression=auto;
 ## AnyKernel file attributes
 # set permissions/ownership for included ramdisk files
 chmod -R 750 $ramdisk/*;
-chmod -R 755 $ramdisk/sbin;
 chown -R root:root $ramdisk/*;
 
 
@@ -43,6 +42,7 @@ dump_boot;
 
 # init.rc
 insert_line init.rc "init.simplegx.rc" after "import /init.usb.rc" "import /init.simplegx.rc";
+remove_section init.rc "service flash_recovery" ""
 
 # Set the default background app limit to 60
 insert_line default.prop "ro.sys.fw.bg_apps_limit=60" before "ro.secure=1" "ro.sys.fw.bg_apps_limit=60";
