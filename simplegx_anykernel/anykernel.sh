@@ -1,4 +1,4 @@
-# AnyKernel2 Ramdisk Mod Script
+# AnyKernel3 Ramdisk Mod Script
 # osm0sis @ xda-developers
 
 ## AnyKernel setup
@@ -9,7 +9,6 @@ do.devicecheck=1
 do.modules=0
 do.cleanup=1
 do.cleanuponabort=1
-do.system_blobs=0
 device.name1=OnePlus 5T
 device.name2=OnePlus5T
 device.name3=oneplus5T
@@ -26,7 +25,7 @@ ramdisk_compression=auto;
 
 ## AnyKernel methods (DO NOT CHANGE)
 # import patching functions/variables - see for reference
-. /tmp/anykernel/tools/ak2-core.sh;
+. tools/ak3-core.sh;
 
 
 ## AnyKernel file attributes
